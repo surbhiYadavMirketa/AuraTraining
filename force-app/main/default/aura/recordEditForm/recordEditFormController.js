@@ -18,11 +18,11 @@
      },
      onsuccess : function(component,event,helper) {
 
-        var record = event.getParams().response;  
+        let record = event.getParams().response;  
         console.log(record.id);
     
-        var navService = component.find("navService");        
-        var pageReference = {
+        let navService = component.find("navService");        
+        let pageReference = {
             // to navigate to home page use type standard_objectPage and actionName home and to navigate to particular record see below 
             type: 'standard__recordPage',         
             attributes: {              
