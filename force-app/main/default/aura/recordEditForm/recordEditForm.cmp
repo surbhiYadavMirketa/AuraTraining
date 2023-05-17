@@ -1,0 +1,31 @@
+<aura:component implements = "lightning:actionOverride,flexipage:availableForRecordHome,lightning:availableForFlowScreens,force:hasRecordId,force:appHostable">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="isMandatory" type="boolean" default="false" />
+    <aura:attribute name="acc" type="Account" default="{'sobjectType': 'Account'}" />
+
+    <aura:attribute name="pageReference" type="Object"/>
+    <lightning:navigation aura:id="navService"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+
+    <lightning:recordEditForm
+    objectApiName = "Account"
+    recordId="{!v.recordId}"
+    onsuccess="{!c.onsuccess}"
+    >
+
+    <div class="slds-m-around_x-large slds-box">
+        <lightning:inputField aura:id="accountname" fieldName="Name"/>
+        <lightning:inputField aura:id="accountnumber" fieldName="AccountNumber" required="{!v.isMandatory}"/>
+        <lightning:inputField aura:id="industry" fieldName="Industry"/>
+        <lightning:inputField aura:id="type" fieldName="Type" value="{!v.acc.Type}" onchange="{!c.checkType}"/>
+
+            <aura:if isTrue="{!not(or(v.acc.Type == 'Prospect' , v.acc.Type == 'Other'))}" >
+                    <lightning:inputField fieldName="AnnualRevenue" />
+            </aura:if>
+        <center>
+            <lightning:button class="slds-m-top_small" type="submit" label="save"/>
+        </center>
+    </div>
+
+    </lightning:recordEditForm>
+</aura:component>

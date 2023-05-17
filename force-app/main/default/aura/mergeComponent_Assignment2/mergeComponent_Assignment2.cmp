@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:appHostable">
+
+    <aura:attribute name="data" type="List" />
+
+    <c:form_Assignment2 data ="{!v.data}"/>
+    <c:table_assignment2 data="{!v.data}"/>
+
+</aura:component>

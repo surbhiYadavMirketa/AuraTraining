@@ -1,0 +1,53 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="acc" type="Account" default="{'sObjectType' : 'Account'}"/>
+    <aura:attribute name="account_List" type="Account[]" default="[]"/>
+	<h1>Form Using Aura</h1>
+    <br></br>
+    <div>
+    <div>
+        <lightning:input type="text" label="First Name" value="{!v.acc.Name}" required="true"/>
+    </div>
+    
+    <div>
+    <lightning:input type="text" label="Last Name" value="{!v.acc.last}" required="true"/>
+    </div>
+    
+    <div>
+    <lightning:input type="integer" label="Phone Number" value="{!v.acc.phone}" required="true" pattern="[0-9]{10}"/>
+    </div>
+        
+     <div>
+    <lightning:input type="email" label="E-mail" value="{!v.acc.email}" required="true"/>
+    </div>
+
+    <center>
+        <lightning:button label="Save" onclick="{!c.myAction}"/>
+    </center>
+    </div>
+
+
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.account_List}" var="acc">
+                <tr>
+                    <td>{!acc.Name}</td>
+                    <td>{!acc.last}</td>
+                    <td>{!acc.phone}</td>
+                    <td>{!acc.email}</td>
+                </tr>
+
+            </aura:iteration>
+        </tbody> 
+    </table>   
+    <!-- <aura:attribute name="fields" type="String[]" default="['Name','AnnualRevenue','Industry']" />
+    <lightning:recordForm aura:id="myRecordForm" recordId="{!v.recordId}" objectApiName="Account" fields="{!v.fields}" 
+    columns="2" mode="edit" onsubmit="{!c.handleSubmit}" /> -->
+</aura:component>

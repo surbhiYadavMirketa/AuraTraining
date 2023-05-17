@@ -1,0 +1,17 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:appHostable">
+
+    <!-- Attributes -->
+    <aura:attribute name="tableItems" type="list" default="[]"/>
+    <aura:attribute name="columns" type="list"/>
+
+    <!-- handler -->
+    <aura:handler name="init" value="{!this }" action="{!c.init }"/>
+
+    <!-- Event Handler  -->
+    <aura:handler name="componentEvent" event="c:componentEvent" action="{!c.handleComponentEvent}"/>
+
+    <c:componentEventForm />
+    <c:componentEventTable tableItems="{!v.tableItems}" Columns="{!v.Columns}" />
+
+
+</aura:component>

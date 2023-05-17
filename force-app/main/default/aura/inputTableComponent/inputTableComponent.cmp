@@ -1,0 +1,24 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="account_List" type="Account[]" default="[]"/>
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.account_List}" var="acc">
+                <tr>
+                    <td>{!acc.Name}</td>
+                    <td>{!acc.last}</td>
+                    <td>{!acc.phone}</td>
+                    <td>{!acc.email}</td>
+                </tr>
+
+            </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>

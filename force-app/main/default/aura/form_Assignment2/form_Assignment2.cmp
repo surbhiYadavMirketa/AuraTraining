@@ -1,0 +1,15 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:appHostable">
+    <aura:attribute name="data" type="list"/>
+
+    <div class="slds-m-around_x-large slds-box">
+
+        <!-- Form Creation  -->
+        <lightning:input aura:id="firstName" label="First Name" type="text" required="true"/>
+        <lightning:input aura:id="lastName" label="Last Name" type="text" required="true"/>
+        <lightning:input aura:id="phoneNumber" label="Phone No." type="integer" required="true" pattern="[0-9]{10}" />
+        <lightning:input aura:id="email" label="E-mail" type="email" required="true" />
+        <center>
+            <lightning:button label="Save" onclick="{!c.myAction}"/>
+        </center>
+    </div>
+</aura:component>

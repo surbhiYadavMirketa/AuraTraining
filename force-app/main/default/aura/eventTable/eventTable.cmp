@@ -1,0 +1,22 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:appHostable">
+
+    <!-- Attributes -->
+    <aura:attribute name="details" type="list" default="[]"/>
+    <aura:attribute name="columns" type="list"/>
+
+    <!-- handler -->
+    <aura:handler name="init" value="{!this }" action="{!c.init }"/>
+
+    <!-- Event Handler  -->
+    <aura:handler event="c:applicationEvent" action="{!c.applicationEvent}" />
+
+    <!-- Datatable  -->
+    <lightning:datatable
+        keyField="id"
+        data="{!v.details}"
+        columns="{!v.columns}"
+
+    />
+
+
+</aura:component>

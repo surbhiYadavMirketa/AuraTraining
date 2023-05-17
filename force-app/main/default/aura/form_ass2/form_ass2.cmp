@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:appHostable">
+    <aura:attribute name="data" type="list"/>
+
+    <!-- Form Creation  -->
+    <lightning:input aura:id="FirstName" label="First Name" type="text" required="true"/>
+    <lightning:input aura:id="LastName" label="Last Name" type="text" required="true"/>
+    <lightning:input aura:id="PhoneNumber" label="Phone No." type="integer" required="true" pattern="[0-9]{10}" />
+    <lightning:input aura:id="Email" label="E-mail" type="email" required="true" />
+
+</aura:component>
