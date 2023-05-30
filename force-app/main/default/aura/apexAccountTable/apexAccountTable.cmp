@@ -1,0 +1,14 @@
+<aura:component controller="accountController" implements = "lightning:actionOverride,flexipage:availableForRecordHome,lightning:availableForFlowScreens,force:hasRecordId,force:appHostable">
+    <aura:attribute name="details" type="list" default="[]"/>
+    <aura:attribute name="columns" type="list"/>
+
+    <aura:handler name="init" value="{!this }" action="{!c.init }"/>
+
+    <lightning:datatable
+        keyField="id"
+        data="{!v.details}"
+        columns="{!v.columns}"
+
+    />
+
+</aura:component>

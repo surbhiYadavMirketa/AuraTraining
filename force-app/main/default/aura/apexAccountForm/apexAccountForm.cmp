@@ -1,0 +1,32 @@
+<aura:component controller="apexAccountController" implements="force:appHostable,lightning:actionOverride">
+    <aura:attribute name="pageReference" type="Object"/>
+    <aura:attribute name="recordId" type="String" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <lightning:navigation aura:id="navService"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <aura:attribute name="acc" type="Account" default="{'sobjectType' : 'Account' }"/>
+
+    <lightning:card variant="Narrow" title="Account" iconName="standard:account" >
+        <div class="slds-m-around_x-large slds-box">
+            <lightning:input label="Account Name" name="accName" value="{!v.acc.Name}" required="true"/>
+            <lightning:input label="Account Number" name="accNumber" value="{!v.acc.AccountNumber}" required="true"/>
+            <lightning:input label="Annual Revenue" name="annualRevenue" value="{!v.acc.AnnualRevenue}"/>
+            <lightning:select name="type" label="Type" value="{!v.acc.Type}">
+                <option value="">--None--</option>
+                <option value="Prospect">Prospect</option>
+                <option value="Customer - Direct">Customer - Direct</option>
+                <option value="Customer - Channel">Customer - Channel</option>
+                <option value="Channel Partner / Reseller">Channel Partner / Reseller</option>
+                <option value="Customer">Customer</option>
+                <option value="Installation Partner">Installation Partner</option>
+                <option value="Pending">Pending</option>
+                <option value="Other">Other</option>
+            </lightning:select>
+            <center>
+                <lightning:button class="slds-m-top_small" label="Save" onclick="{!c.save}" variant="brand"/>
+            </center>
+        </div>
+    </lightning:card>
+</aura:component>

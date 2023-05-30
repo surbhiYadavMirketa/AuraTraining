@@ -1,0 +1,65 @@
+<aura:component controller="apexAccountController" implements = "lightning:actionOverride,flexipage:availableForRecordHome,lightning:availableForFlowScreens,force:hasRecordId,force:appHostable">
+    <aura:attribute name="details" type="list" default="[]"/>
+    <aura:attribute name="columns" type="list"/>
+    <aura:attribute name="offset" type="integer" default="0" />
+    <aura:attribute name="count" type="integer" />
+    <aura:attribute name="isVisible" type="Boolean" default="false" />
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+
+    <aura:handler name="init" value="{!this }" action="{!c.init }"/>
+    
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <lightning:card variant="Narrow" iconName="standard:account" title="Accounts">
+        <aura:set attribute="actions" >
+            <lightning:button class="slds-align_absolute-center" variant="brand" label="New" title="New" onclick="{! c.openAccountForm}" />    
+        </aura:set>
+
+        <!-- class="slds-box slds-theme_default" -->
+
+        <!-- Toggle  -->
+        <div class="slds-form-element">
+            <label class="slds-checkbox_toggle slds-grid">
+            <span class="slds-form-element__label slds-m-bottom_none">Pagination</span>
+            <input onclick="{!c.onToggle}" type="checkbox" name="checkbox-toggle-16" value="checkbox-toggle-16" aria-describedby="checkbox-toggle-16" />
+            <span id="checkbox-toggle-15" class="slds-checkbox_faux_container" aria-live="assertive">
+            <span class="slds-checkbox_faux"></span>
+            <span class="slds-checkbox_on">Enabled</span>
+            <span class="slds-checkbox_off">Disabled</span>
+            </span>
+            </label>
+        </div>
+
+        <aura:if isTrue="{!v.isVisible}">
+            <div style="height: 500px;overflow-x: scroll;" >
+                <lightning:datatable
+                    keyField="id"
+                    data="{!v.details}"
+                    columns="{!v.columns}"
+                    hideCheckboxColumn="true"
+                    onrowaction="{! c.handleRowAction}" 
+                    />      
+            </div>
+            <div>
+                <lightning:button class="slds-m-top_small" variant="brand" onclick="{!c.handlePrevious}" label="Previous" name="Previous" />
+                <lightning:button class="slds-m-top_small" variant="brand" onclick="{!c.handleNext}" label="Next" name="Next" />    
+            </div>      
+
+            <aura:set attribute="else">
+            <div style="height: 500px;overflow-x: scroll;" >
+                <lightning:datatable
+                    keyField="id"
+                    data="{!v.details}"
+                    columns="{!v.columns}"
+                    hideCheckboxColumn="true"
+                    onrowaction="{! c.handleRowAction}" 
+                    onloadmore="{!c.loadMoreData}"
+                    enableInfiniteLoading = "true" 
+                    />      
+            </div>
+        </aura:set>
+        </aura:if>
+        
+        
+    </lightning:card>
+
+</aura:component>
